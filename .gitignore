@@ -1,5 +1,6 @@
 # Archive folder
 archive/
+paper_figures/
 
 # Results and outputs
 results/
@@ -56,12 +57,8 @@ configs/*
 !configs/example_config.yaml
 
 # Data (large files)
-benchmark/*/data/*.csv
-benchmark/*/data/*.dat
-benchmark/*/data/*.txt
-benchmark_pubs/*/data/*.csv
-benchmark_pubs/*/data/*.dat
-benchmark_pubs/*/data/*.txt
+benchmark/
+benchmark_pubs/
 
 # Temporary files
 temp*.py
