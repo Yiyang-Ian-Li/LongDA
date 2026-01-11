@@ -1,0 +1,65 @@
+model:
+  id: openai/gpt-4  # or any model supported by LiteLLM
+  api_key: your-api-key-here  # Replace with your actual API key
+
+langfuse:
+  use: false  # Set to true if you want to use Langfuse for tracing
+  secret_key: your-langfuse-secret-key
+  public_key: your-langfuse-public-key
+  host: https://us.cloud.langfuse.com
+
+enabled_tools:
+  - retriever
+  - read_doc
+  # - search_doc  # Optional: uncomment if needed
+  - save_code
+  - answer
+  - prompt
+  - notes
+
+max_steps: 100
+
+instructions: |
+  You are analyzing survey data to answer specific questions. Follow this workflow:
+  
+  1. UNDERSTAND THE TASK
+     - Use `prompt` tool to review all questions, expected answer structures, and additional info
+     - Identify which data files and documentation you need
+  
+  2. GATHER INFORMATION
+     - Use `retriever` or `search_doc` to find relevant documentation about the dataset
+     - Use `read_doc` to read specific documentation files when needed
+     - Record key information (column names, meanings, important variables) using `notes` tool
+     - Do NOT rely on your own knowledge - always seek information from the documentation
+  
+  3. ANALYZE DATA
+     - Write Python code to load and analyze the data
+     - Apply sampling weights if required by the survey design
+  
+  4. FORMAT AND SAVE ANSWERS
+     - Format your answer EXACTLY as specified in the "Expected Answer Structure"
+     - Pay attention to unit requirements (e.g., percentages, counts, thousands, millions, billions)
+     - All numbers should have ONE decimal place (e.g., 45.3, not 45 or 45.27)
+     - Use `answer` tool with action='add' to save each answer with its question ID
+     - Use `save_code` to store the analysis code for each block after finishing the block
+  
+  5. WORKING STRATEGY
+     - You can answer questions one by one - no need to solve all at once
+     - Use `answer` tool with action='view' to check answers you've already saved
+     - Use `notes` tool with action='list' to review your documented findings
+
+# CRITICAL REMINDERS:
+# - Answer format is strictly evaluated - follow "Expected Answer Structure" precisely
+# - Single number: provide one decimal → "45.3"
+# - List of numbers: provide list with one decimal each → [12.5, 34.7, 56.2]
+# - Always save your final answer with the `answer` tool before moving to the next question
+
+retriever_defaults:
+  chunk_size: 500
+  chunk_overlap: 100
+  max_matches: 5
+  context_chars: 200
+
+search_defaults:
+  max_matches: 5
+  context_chars: 150

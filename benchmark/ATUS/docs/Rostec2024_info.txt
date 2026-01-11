@@ -1,0 +1,15 @@
+
+The data file atusrostec_2024.dat (2024 Eldercare Roster file) contains 12 variables and 1,738 observations.  
+
+For more information about this file, see the ATUS 2024 Interview Data Dictionary, available online at:  https://www.bls.gov/tus/dictionaries/atusintcodebk24.pdf.
+
+In addition to the data file, three computer programs are contained in atusrostec-2024.zip.  If you have SPSS, SAS, or Stata software, you may use these programs to read the data into your statistical software package.  The programs include variable and value labels for most variables.  For information about unlabeled values, please refer to the data dictionary.
+
+The file "atusrostec_2024.sps" reads the data into SPSS; some variable names exceed length 8.
+
+The file "atusrostec_2024.sas" reads the data into SAS.
+
+The file "atusrostec_2024.do" reads the data into Stata.
+
+If you have SAS, SPSS, or Stata software, open the corresponding program, edit the infile (in SAS), 
+file (in SPSS), or import (in Stata) statement to reference the data file on your computer, and run the program. 

@@ -1,0 +1,68 @@
+# Archive folder
+archive/
+
+# Results and outputs
+results/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# API Keys and secrets (IMPORTANT!)
+configs/*
+!configs/example_config.yaml
+
+# Data (large files)
+benchmark/*/data/*.csv
+benchmark/*/data/*.dat
+benchmark/*/data/*.txt
+benchmark_pubs/*/data/*.csv
+benchmark_pubs/*/data/*.dat
+benchmark_pubs/*/data/*.txt
+
+# Temporary files
+temp*.py
+test_*.py
