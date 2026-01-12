@@ -32,11 +32,34 @@ pip install -r requirements.txt
 
 ### Download Data
 
-Download the complete benchmark data (surveys + documentation) from Hugging Face:
+Download the **complete benchmark dataset** including all survey data and documentation from Hugging Face:
 
 ```bash
-# Coming soon
+# Install Git LFS (required for large files)
+git lfs install
+
+# Clone the complete dataset
+cd /path/to/your/workspace
+git clone https://huggingface.co/datasets/EvilBench/LongDA benchmark
+
+# Your directory should now contain:
+# benchmark/
+# ├── benchmark.csv
+# └── [17 survey folders with data/ and docs/]
 ```
+
+Or download programmatically:
+```python
+from huggingface_hub import snapshot_download
+
+snapshot_download(
+    repo_id="EvilBench/LongDA",
+    repo_type="dataset",
+    local_dir="./benchmark"
+)
+```
+
+**Note**: The complete dataset (~1.8GB) is required. The `benchmark.csv` file alone is insufficient as evaluation requires access to raw survey data and documentation.
 
 ### Run Evaluation
 
